@@ -4,8 +4,9 @@
 }
 
 * {
-  transition: all .7s;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  transition: all 0.7s;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 body {
@@ -24,27 +25,26 @@ div {
   display: inline-block;
 }
 
-
-.no-click{
+.no-click {
   pointer-events: none;
 }
 
 .area-carta,
 .carta,
-.cara{
+.cara {
   cursor: pointer;
   width: var(--width);
   min-width: 100px;
   height: var(--height);
 }
 
-.carta{
+.carta {
   position: relative;
   transform-style: preserve-3d;
   animation: iniciar 5s;
 }
 
-.cara{
+.cara {
   position: absolute;
   backface-visibility: hidden;
   box-shadow: inset 0 0 0 5px white;
@@ -54,22 +54,22 @@ div {
   align-items: center;
 }
 
-.reverso{
+.reverso {
   background-color: #a1f0f9;
   transform: rotateY(180deg);
 }
 
-.superior{
+.superior {
   background: #8463c6;
 }
 
-.buttons-container{
-    display: flex;
-    justify-content: end;
-    align-items: end;
+.buttons-container {
+  display: flex;
+  justify-content: end;
+  align-items: end;
 }
 
-.boton-juego{
+.boton-juego {
   cursor: pointer;
   background: #8463c6;
   padding: 20px;
@@ -81,29 +81,28 @@ div {
   display: none;
 }
 
-
-.inicio{
+.inicio {
   display: block;
 }
 
-
-.boton-juego:hover{
-  background: #415787; 
+.boton-juego:hover {
+  background: #415787;
   color: azure;
 }
 
-#victoria,#contador-container{
-    background-color: #8463c6;
-    height: 90px;
-    width: 320px;
-    border:#ffffff solid 4px;
-    border-radius: 30px;
-    margin-bottom: 80px;
-    display: none;
+#victoria,
+#contador-container {
+  background-color: #8463c6;
+  height: 90px;
+  width: 320px;
+  border: #ffffff solid 4px;
+  border-radius: 30px;
+  margin-bottom: 80px;
+  display: none;
 }
 
-#contador-container{
-    height: 120px;
+#contador-container {
+  height: 120px;
 }
 
 @keyframes iniciar {
@@ -117,3 +116,5 @@ div {
     transform: rotateY(0deg);
   }
 }
+
+

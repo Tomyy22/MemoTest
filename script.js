@@ -22,12 +22,7 @@ function establecerIconos() {
   ];
 }
 
-
 const tablero = document.getElementById("tablero");
-
-
-
-
 
 function crearTablero(nivel) {
   establecerIconos();
@@ -47,7 +42,7 @@ function crearTablero(nivel) {
             </div>
         </div>        
         `);
-        
+
     if (i % 2 == 1) {
       iconos.splice(0, 1);
     }
@@ -55,13 +50,13 @@ function crearTablero(nivel) {
   cartas.sort(() => Math.random() - 0.5);
   tablero.innerHTML = cartas.join(" ");
 
-tablero.addEventListener('animationstart', function() {
-  tablero.classList.add('no-click');
-});
+  tablero.addEventListener("animationstart", function () {
+    tablero.classList.add("no-click");
+  });
 
-tablero.addEventListener('animationend', function() {
-  tablero.classList.remove('no-click');
-});
+  tablero.addEventListener("animationend", function () {
+    tablero.classList.remove("no-click");
+  });
 }
 function seleccionarCarta(i) {
   let carta = document.getElementById("carta" + i);
@@ -83,31 +78,31 @@ const dificilEl = document.getElementById("dificil");
 const muydificilEl = document.getElementById("muy-dificil");
 const newgameEl = document.getElementById("nuevo");
 
-   newgameEl.onclick = function () {
-    facilEl.style.display = "block" 
-    medioEl.style.display = "block";
-    dificilEl.style.display = "block";
-    muydificilEl.style.display = "block";
-    newgameEl.style.display = "none";
-    cont = 0;
-    contador = 0;
-  };
+newgameEl.onclick = function () {
+  facilEl.style.display = "block";
+  medioEl.style.display = "block";
+  dificilEl.style.display = "block";
+  muydificilEl.style.display = "block";
+  newgameEl.style.display = "none";
+  cont = 0;
+  contador = 0;
+};
 
 facilEl.onclick = function () {
   crearTablero(8);
   dificultad = 1;
-   facilEl.style.display = "none" 
-   medioEl.style.display = "none";
-   dificilEl.style.display = "none";
-   muydificilEl.style.display = "none";
-   newgameEl.style.display = "block";
-   cont = 0;
-   contador = 0;
+  facilEl.style.display = "none";
+  medioEl.style.display = "none";
+  dificilEl.style.display = "none";
+  muydificilEl.style.display = "none";
+  newgameEl.style.display = "block";
+  cont = 0;
+  contador = 0;
 };
 medioEl.onclick = function () {
   crearTablero(16);
   dificultad = 2;
-  facilEl.style.display = "none" 
+  facilEl.style.display = "none";
   medioEl.style.display = "none";
   dificilEl.style.display = "none";
   muydificilEl.style.display = "none";
@@ -118,7 +113,7 @@ medioEl.onclick = function () {
 dificilEl.onclick = function () {
   crearTablero(24);
   dificultad = 3;
-  facilEl.style.display = "none" 
+  facilEl.style.display = "none";
   medioEl.style.display = "none";
   dificilEl.style.display = "none";
   muydificilEl.style.display = "none";
@@ -129,7 +124,7 @@ dificilEl.onclick = function () {
 muydificilEl.onclick = function () {
   crearTablero(32);
   dificultad = 4;
-  facilEl.style.display = "none" 
+  facilEl.style.display = "none";
   medioEl.style.display = "none";
   dificilEl.style.display = "none";
   muydificilEl.style.display = "none";
@@ -154,68 +149,44 @@ function deseleccionar(select) {
       reverso1.style.background = "#50ffb1";
       reverso2.style.background = "#50ffb1";
 
-      function mensajes(string){
-        mensajeVictoria(string);
-                mensajeContador(contador);
-                h1.style.display = "block";
-                conth1.style.display = "block";
-                borrarContenido();
-                cont = 0;
-                contador = 0;
+      function mensajes(string) {
+        mensajeVictoria(string, contador);
+        cont = 0;
+        contador = 0;
       }
 
-      function mensajeVictoria(string) {
-        let elemento = document.getElementById("victoria");
-        elemento.innerHTML = `<h1>Ganaste${string}</h1>`;
-      }
-      function mensajeContador(contador) {
-        let elemento = document.getElementById("contador-container");
-        elemento.innerHTML = `<h1>Tuviste ${contador} Error/Errores `;
-      }
-
-      const h1 = document.getElementById("victoria");
-      const conth1 = document.getElementById("contador-container");
-
-      function borrarContenido() {
-        let elemento = document.getElementById("victoria");
-        let elemento2 = document.getElementById("contador-container");
-        setTimeout(() => {
-          elemento.style.display = "none";
-          elemento2.style.display = "none";
-        }, 5000);
+      function mensajeVictoria(string, contador) {
+        swal({
+          title: `Ganaste ${string}`,
+          text: `Cantidad de Error/Errores cometidos en la partida: ${contador}`,
+          icon: "success",
+        });
       }
       cont++;
       if (dificultad == 1) {
         if (cont == 4) {
-          mensajes(" Nivel Facil")
+          mensajes(" Nivel Facil");
+          stopTimer();
         }
       }
       if (dificultad == 2) {
         if (cont == 8) {
-          mensajes(" Nivel Medio")
+          mensajes(" Nivel Medio");
+          stopTimer();
         }
       }
       if (dificultad == 3) {
         if (cont == 12) {
-          mensajes(" Nivel Dificil")
+          mensajes(" Nivel Dificil");
+          stopTimer();
         }
       }
       if (dificultad == 4) {
         if (cont == 16) {
-          mensajes(" Nivel Muy Dificil")
+          mensajes(" Nivel Muy Dificil");
+          stopTimer();
         }
       }
     }
   }, 1000);
 }
-
-
-
-
-// mensajeVictoria(" Nivel Facil");
-//           mensajeContador(contador);
-//           h1.style.display = "block";
-//           conth1.style.display = "block";
-//           borrarContenido();
-//           cont = 0;
-//           contador = 0;
